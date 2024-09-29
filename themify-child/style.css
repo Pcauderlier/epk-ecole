@@ -1,0 +1,165 @@
+/*
+ Theme Name: Themify Child
+ Theme URI: http://example.com/
+ Description: Thème enfant de Themify
+ Author: DarkPirros
+ Template: themify-ultra
+ Version: 1.0.0
+*/
+
+/* Ajoute ici tes styles personnalisés */
+
+.container h1{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 45px;
+    font-weight: 700;
+}
+.page-template-page-admin #pagewrap{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100vw;
+}
+.page-template-page-admin #pagewrap #body{
+    flex : 1;
+    margin: 0 20px;
+}
+
+.presenceContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.presenceContainer .prenceTable{
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 0 16px rgb(35 34 34 / 66%);
+    display: flex;
+    flex-direction: column;
+
+}
+.presenceContainer .prenceTable h2{
+    text-align: center;
+    font-size: 30px;
+}
+
+.presenceContainer .prenceTable table{
+    width: 100%;
+}
+.presenceContainer .prenceTable table th{
+    text-align: start;
+}
+.presenceContainer .prenceTable table tr{
+    margin: 10px 0;
+}
+
+.presenceFilters ul{
+    margin-top: 30px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.presenceFilters ul li input {
+    position: absolute;
+    left : -99999px
+}
+
+.presenceFilters ul li label {
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 20px;
+    border: 2px solid #bf2e62;
+    color: #bf2e62;
+
+}
+.presenceFilters ul li input:checked + label{
+    background-color: #bf2e62;
+    color: white;
+} 
+
+@media (max-width:1100px) {
+    .presenceContainer{
+        grid-template-columns: 1fr;
+    }
+}
+
+#pdfContent {
+    width: 738px;
+    height: 1070px ;
+    padding: 25px;
+
+}
+#pdfContent h1{
+    text-align: center;
+    color: black;
+    font-size: 30px;
+
+}
+#pdfContent table{
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+#pdfContent table tbody td ,#pdfContent table thead th {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 20px;
+    height: 60px;
+}
+#pdfContent table tbody tr td:nth-of-type(1){
+    width: 10%;
+}
+
+#pdfContent table tbody tr td:nth-of-type(2){
+    width: 60%;
+ 
+}
+#pdfContent table tbody tr td:last-of-type{
+    width: 30%;
+}
+.pdfWrapper{
+    border: 2px dashed black;
+    width: fit-content;
+    height: fit-content;
+
+}
+#pdfContent table tbody tr:hover{
+    background-color: red;
+    opacity: .5;
+    cursor: no-drop;
+}
+#pdfContent table tbody tr:hover td{
+    color: white;
+    opacity: 1;
+}
+.pdfButtons{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.gotoPdf{
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+.gotoPdf a{
+    border-radius: 10px;
+    border: 2px solid #b86100 ;
+    color: #b86100;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+}
+.gotoPdf a:hover{
+    background-color: #b86100;
+    color: white;
+    text-decoration: none;
+}
