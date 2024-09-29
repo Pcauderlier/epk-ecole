@@ -114,8 +114,8 @@ else{
                     if ($order['status'] !== "cancelled"){
                         ?>
                         <tr>
-                            <td><?= $count ?></td>
-                            <td><?= $order['name'] ?></td>
+                            <td class="num"><?= $count ?></td>
+                            <td class="name"><?= $order[0]['name'] ?></td>
                             <td> </td>
                         </tr>
                         <?php

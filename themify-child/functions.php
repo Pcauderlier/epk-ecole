@@ -10,7 +10,7 @@ function themify_child_enqueue_styles() {
     // Charger les styles du thème enfant
     wp_enqueue_script("htmltopdf" , get_stylesheet_directory_uri()."/dist/pdf/html2pdf.bundle.min.js");
     wp_enqueue_style( 'themify-child-style', get_stylesheet_directory_uri() . '/style.css', array('themify-parent-style') );
-    wp_enqueue_script("epkJs" , get_stylesheet_directory_uri()."/epk.js");
+    wp_enqueue_script("epkJs" , get_stylesheet_directory_uri()."/epk.js" , [] , "1.1");
 }
 add_action( 'wp_enqueue_scripts', 'themify_child_enqueue_styles' );
 
@@ -46,7 +46,7 @@ function getSortedCourseList(){
                 }
                 $date = new DateTime($dateList[2]."-".$dateList[1]."-".$dateList[0]);
                 $today = new DateTime();
-                $twoWeeks = $today->modify("-2 weeks");
+                $twoWeeks = $today->modify("-1 year");
                 $id = $product->get_id();
                 if ($date > $twoWeeks){
                     $product_array[$id] = array(
@@ -87,7 +87,7 @@ function getSortedCourseList(){
         }
     
     
-        set_transient("courseList6" , $product_array , 20);
+        set_transient("courseList6" , $product_array , 3600);
     }
     return $product_array;
     

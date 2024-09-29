@@ -38,15 +38,27 @@ jQuery(document).ready(function ($) {
     $("#addLine").on('click' , function(){
         let lastCount = $("#pdfContent tbody tr:last-of-type td:first-of-type").text()
         if (+lastCount <= 15){
-            let line = $("<tr><td>" + (+lastCount+1) + "</td><td></td><td></td></tr>")
+            let line = $("<tr><td class='num'>" + (+lastCount+1) + "</td><td></td><td></td></tr>")
             $(line).on("click" , function(){
-                $(this).remove()
+                removeTr($(line))
             })
             $("#pdfContent tbody").append(line)
 
         }
     })
     $("#pdfContent tbody tr").on("click" , function(){
-        $(this).remove()
+       removeTr($(this))
     })
+
+    function removeTr(tr){
+        let isOk = window.confirm("Etes vous sur de vouloir supprimer la ligne " + $(tr).find(".name").text())
+        if( isOk){
+            $(tr).remove()
+            let count = 1
+            $("#pdfContent tbody tr").each(function(){
+                $(this).find('.num').text(count)
+                count++
+            })
+        }
+    }
 })
