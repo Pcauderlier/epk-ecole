@@ -37,7 +37,7 @@ if (!isset($_GET['course_id'])){
                     <thead>
                         <tr>
                             <th>N°</th>
-                            <th>Numeros de Client</th>
+                            <th>Numeros de Commande</th>
                             <th>Nom</th>
                             <th>Etat de la comande</th>
                             <th>Prix TVAC </th>
@@ -45,18 +45,29 @@ if (!isset($_GET['course_id'])){
                     </thead>
                     <tbody>
                     <?php
-                    foreach($course["orders"] as $i => $order){
-                        
-                        ?>
-                        <tr class="<?= $order["status"] ?>">
-                            <td class="num"><?= $i+1 ?></td>
-                            <td><a target="_blank" href="https://www.ecole-kinesio.be/wp-admin/post.php?post=<?= $order['order_id'] ?>&action=edit"><?= $order['order_id'] ?></a></td>
-                            <td><a href="mailto:<?= $order["email"] ?>"><?= $order["name"] ?></a></td>
-                            <td><?= $order['status'] ?></td>
-                            <td><?= $order['total'] ?>€</td>
+                    foreach($course["orders"] as $i => $orders){
+                        $tot = 0;
+                        $status = "";
 
-                        </tr>
-                        <?php
+                        foreach($orders as $k => $order){
+                            $tot += $order['total'];
+                            if( $k !== 0){
+                                $status .= " + ";
+                            }
+                            $status .= $order['status'];
+                            
+                        }
+                            ?>
+                            <tr class="<?= $order["status"] ?>">
+
+                                <td class="num"><?= $i+1 ?></td>
+                                <td><a target="_blank" href="https://www.ecole-kinesio.be/wp-admin/post.php?post=<?= $order['order_id'] ?>&action=edit"><?= $order['order_id'] ?></a></td>
+                                <td><a href="mailto:<?= $order["email"] ?>"><?= $order["name"] ?></a></td>
+                                <td><?= $status ?></td>
+                                <td><?= $tot ?>€</td>
+
+                            </tr>
+                            <?php
                     }
                     ?>
                     </tbody>

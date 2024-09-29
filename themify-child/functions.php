@@ -22,7 +22,7 @@ function pre($content){
 
 
 function getSortedCourseList(){
-    $product_array = get_transient("courseList5");
+    $product_array = get_transient("courseList6");
     if (empty($product_array)){
 
         $products = wc_get_products(array(
@@ -73,10 +73,10 @@ function getSortedCourseList(){
         foreach ($orders as $order){
             foreach($order->get_items() as $item){
                 if (isset($product_array[$item->get_product_id()])){
-                    $product_array[$item->get_product_id()]["orders"][] = [
+                    
+                    $product_array[$item->get_product_id()]["orders"][$order->get_customer_id()][] = [
                         "email" => $order->get_billing_email(),
                         "name" => $order->get_billing_first_name() . ' ' . $order->get_billing_last_name(),
-    
                         "status" => $order->get_status(),
                         "customer_id" => $order->get_customer_id(),
                         "order_id" => $order->get_id(),
@@ -87,20 +87,11 @@ function getSortedCourseList(){
         }
     
     
-        set_transient("courseList5" , $product_array , 3600);
+        set_transient("courseList6" , $product_array , 20);
     }
     return $product_array;
     
 }
-
-// function add_admin_menu_item($items, $args) {
-//     if (is_user_logged_in() && current_user_can('administrator')) {
-
-//         $items .= '<li><a href="' . home_url("admin") . '">Présences</a></li>';
-//     }
-//     return $items;
-// }
-// add_filter('wp_nav_menu_items', 'add_admin_menu_item', 10, 2);
 
 function add_admin_submenu_item($items, $args) {
     // Vérifier si l'utilisateur est connecté et a le rôle d'administrateur
