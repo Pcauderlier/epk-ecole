@@ -16,6 +16,9 @@ if (!isset($_GET['course_id'])){
 
 ?>
 <div class="container">
+    <div class="actionButtons">
+        <button id="refreshTransient">Refresh</button>
+    </div>
     <div class="presenceFilters">
         <ul>
             <li><input type="checkbox" value="completed" id="completed" checked><label for="completed">Completed</li>

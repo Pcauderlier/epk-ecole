@@ -61,4 +61,17 @@ jQuery(document).ready(function ($) {
             })
         }
     }
+    $("#refreshTransient").on("click", function(){
+        console.log("hello there")
+        $.ajax({
+            type : "get",
+            url : epk.ajaxurl,
+            data : {
+                action : "refresh_transient"
+            },
+            success : () =>{
+                location.reload();
+            }
+        })
+    })
 })

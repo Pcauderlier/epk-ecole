@@ -9,8 +9,9 @@ function themify_child_enqueue_styles() {
     
     // Charger les styles du thème enfant
     wp_enqueue_script("htmltopdf" , get_stylesheet_directory_uri()."/dist/pdf/html2pdf.bundle.min.js");
-    wp_enqueue_style( 'themify-child-style', get_stylesheet_directory_uri() . '/style.css', array('themify-parent-style') );
-    wp_enqueue_script("epkJs" , get_stylesheet_directory_uri()."/epk.js" , [] , "1.1");
+    wp_enqueue_style( 'themify-child-style', get_stylesheet_directory_uri() . '/style.css', array('themify-parent-style')  , "0.1");
+    wp_enqueue_script("epkJs" , get_stylesheet_directory_uri()."/epk.js" , [] , "1.12");
+    wp_localize_script('epkJs','epk',['ajaxurl'=>admin_url( 'admin-ajax.php' ),"url" => get_home_url()]);
 }
 add_action( 'wp_enqueue_scripts', 'themify_child_enqueue_styles' );
 
@@ -117,3 +118,11 @@ function add_admin_submenu_item($items, $args) {
 }
 add_filter('wp_nav_menu_objects', 'add_admin_submenu_item', 10, 2);
 
+add_action("wp_ajax_refresh_transient" , "ajax_refresh_transient");
+
+function ajax_refresh_transient(){
+    delete_transient("courseList6");
+    wp_send_json_success();
+
+
+}

@@ -20,11 +20,13 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    
     width: 100vw;
 }
 .page-template-page-admin #pagewrap #body{
+    margin-top: 160px;
     flex : 1;
-    margin: 0 20px;
+    margin: 20px;
 }
 
 .presenceContainer{
@@ -162,4 +164,8 @@
     background-color: #b86100;
     color: white;
     text-decoration: none;
+}
+
+.actionButtons{
+    margin-top: 30px;
 }
